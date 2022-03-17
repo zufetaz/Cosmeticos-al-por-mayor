@@ -1,0 +1,313 @@
+
+<!--  -->
+{%comment%}
+
+<div class="containedor">
+  
+  <ul class="slider">
+    <li id="slide1">
+      <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/ATENEA_GLACIER_GLACIERCOOLINGCREAMPACK2UNITS_1_2000x.jpg?v=1637273803"/>
+    </li>
+    <li id="slide2">
+      <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/L.A.Girl_GBP371_BrowBestie-DarkBlondePack12Units_1_2000x.jpg?v=1634676629"/>
+    </li>
+    <li id="slide3">
+      <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/MAYBELLINE_MLOF_LOTSOFLASHESWASHABLEMASCARAASSORTEDPACK6UNITS...._2000x.jpg?v=1621934425"/>
+    </li>
+  </ul>
+  
+  <ul class="menu">
+    <li>
+      <a href="#slide1">
+        <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/ATENEA_GLACIER_GLACIERCOOLINGCREAMPACK2UNITS_1_2000x.jpg?v=1637273803"/>
+      </a>
+    </li>
+    <li>
+      <a href="#slide2">
+        <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/L.A.Girl_GBP371_BrowBestie-DarkBlondePack12Units_1_2000x.jpg?v=1634676629"/>
+      </a>
+    </li>
+     <li>
+      <a href="#slide3">
+       <img src="https://cdn.shopify.com/s/files/1/2376/5125/products/MAYBELLINE_MLOF_LOTSOFLASHESWASHABLEMASCARAASSORTEDPACK6UNITS...._2000x.jpg?v=1621934425"/>
+       </a>
+    </li>
+  </ul>
+  
+</div>
+
+
+
+<style>
+
+.containedor{
+  margin: auto;
+  background-color: white;
+  width: 100%;
+  padding: 4px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.slider{
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+ul.slider li {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background:#fff;
+}
+
+ul.slider li img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+ul.slider li:first-child {
+    opacity: 1; /*Mostramos el primer <li>*/
+}
+
+ul.slider li:target {
+    opacity: 1; /*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.menu{
+  text-align: center;
+  margin: 20px;
+}
+
+.menu li{
+  display: inline-block;
+  text-align: center;
+}
+
+.menu li a{
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 3px;
+  width: 70px;
+  height: 70px;
+  font-size: 20px;
+  border-radius: 0%;
+}
+.menu li a img {
+  width:70px;
+  height:70px;
+}
+
+@media only screen and(max-width: 460px){
+  .containedor{
+    margin: auto;
+    background-color: white;
+    width: 100%;
+    padding: 4px;
+  }
+
+  ul, li {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+  }
+
+  ul.slider{
+    position: relative;
+    width: 500px;
+    height: 400px;
+  }
+
+  ul.slider li {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      opacity: 0;
+      width: inherit;
+      height: inherit;
+      transition: opacity .5s;
+      background:#fff;
+  }
+
+  ul.slider li img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+}
+
+</style>
+{% endcomment %}
+
+
+
+<div class="containedor">
+  
+  
+  <ul class="slider">
+    {%for media in product.media %}
+    
+      <li id="slide-{{media.id}}">
+        {% if media.alt contains "iframe" %}
+        	{{ media.alt }}
+        {% else %}
+        
+            <img src="{{ media.src | img_url : '1024x1024' }}"/>
+        
+        {% endif %} 
+      </li>
+   
+    {%endfor%}
+
+  </ul>
+  
+  <ul class="menu"> 
+    {% for media in product.media %}
+      <li>
+        <a href="#slide-{{media.id}}">
+          <img src="{{ media.src | img_url }}"/>
+        </a>
+      </li>
+    {% endfor %}
+    
+  </ul>
+  
+</div>
+
+
+
+<style>
+ .containedor{
+  margin: auto;
+  background-color: white;
+  width: 100%;
+  padding: 2px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.slider{
+  position: relative;
+  width: 100%;
+  height: 560px;
+}
+
+ul.slider li {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background:#fff;
+}
+
+ul.slider li img{
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  
+}
+
+ 
+  
+  ul.slider li iframe{
+  	height: 400px;
+    margin-top: 10%;
+  }
+
+ul.slider li:first-child {
+    opacity: 1; /*Mostramos el primer <li>*/
+}
+
+ul.slider li:target {
+    opacity: 1; /*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.menu{
+  text-align: center;
+  margin: 20px;
+}
+
+.menu li{
+  display: inline-block;
+  text-align: center;
+}
+
+.menu li a{
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 3px;
+  width: 90px;
+  height: 90px;
+  font-size: 20px;
+  border-radius: 0%;
+}
+.menu li a img {
+  width:90px;
+  height:90px;
+}
+ 
+/* 
+  @media only screen and (max-width: 400px){
+  	ul.slider{
+      position: relative;
+      width: 100%;
+      height: 300px;
+    }
+    ul.slider li img{
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+
+    }
+    .menu-img{
+      text-align: center;
+      margin: 20px;
+    }
+    .menu-img li a{
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      background-color: #fff;
+      padding: 3px;
+      width: 75px;
+      height: 75px;
+      font-size: 20px;
+      border-radius: 0%;
+    }
+    .menu-img li a img {
+      width:70px;
+      height:70px;
+    }
+    ul.slider li iframe{ 
+      height: 300px;
+      margin-top: 0px;
+      width:100%;
+    }
+  } 
+
+   */
+</style>
+
+
